@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/noterlite/static/css/main.797418dd.css",
+    "main.js": "/noterlite/static/js/main.aae77025.js",
+    "static/media/logo.svg": "/noterlite/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
+    "index.html": "/noterlite/index.html",
+    "main.797418dd.css.map": "/noterlite/static/css/main.797418dd.css.map",
+    "main.aae77025.js.map": "/noterlite/static/js/main.aae77025.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.797418dd.css",
+    "static/js/main.aae77025.js"
+  ]
+}
