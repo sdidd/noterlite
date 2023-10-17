@@ -1,31 +1,28 @@
-const username = encodeURIComponent("user");
-const password = encodeURIComponent("user");
 
+import cors from "cors";
+import express from 'express';
+import session from "express-session";
 
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = "mongodb+srv://user:user@buildex.t5zyfgm.mongodb.net/?retryWrites=true&w=majority";
+import { connect } from 'mongoose';
+connect(uri).then(()=>{console.log("Connected to Database")});
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+const app = express();
+app.use(express.json())
+app.use(cors())
+app.use
+
+import User from "../db/User.js";
+import note from "../db/Note.js";
+
+app.post("/noteadd", async (req, resp) => {
+
+  console.warn(req.body);
+  let projectadd = new Project(req.body);
+  let result = await projectadd.save();
+
+  console.warn(req.body.devl_id);
+  let userProjectResult = await User.updateMany({ _id: req.body.devl_id }, { $push: { project_id: result._id } }, { new: true });
+  console.warn(userProjectResult);
+  resp.send(result);
 });
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
